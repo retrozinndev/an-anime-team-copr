@@ -9,7 +9,8 @@
 %define app_id moe.launcher.%{app_name}
 %define build_output anime-borb-launcher
 
-Name: %{srcname}
+# name needs to be the same as package name in copr
+Name: anime-borb-launcher
 Version: 1.0.1
 Release: 1%{?dist}
 License: GPLv3
