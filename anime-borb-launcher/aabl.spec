@@ -1,10 +1,8 @@
 
-# !!! NEED FIX FOR ICON NAME IN RESOURCES OF REPO !!!
-
 %global srcname an-anime-borb-launcher
 %global app_name An Anime Borb Launcher
 %define install_dir %{_libdir}/%{app_name}
-%define icon_dir %{_datadir}/icons/hicolor/512x512/apps
+%define icon_dir %{_datadir}/icons
 %define apps_dir %{_datadir}/applications
 %define app_id moe.launcher.%{app_name}
 %define build_output anime-borb-launcher
@@ -25,10 +23,13 @@ BuildArch: x86_64
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
 Requires: git
-Requires: libcurl
-Requires: libadwaita
-Requires: gtk4
 Requires: glibc
+Requires: libwebp
+Requires: gtk4
+Requires: libcurl
+Requires: p7zip
+Requires: libadwaita
+Requires: xdg-desktop-portal
 
 #-- OPTIONAL DEPENDENCIES ------------------------------------------------------#
 Suggests: mangohud
@@ -54,27 +55,28 @@ BuildRequires: pango-devel
 BuildRequires: rust-gdk4-devel
 
 %description
-The Honkers Railway launcher for Linux with automatic patching and telemetry disabling 
+%{summary}
 
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
 %prep
 %autosetup
 
 %build
+cd %{SOURCE0}
 cargo build --release
 
 %install
 # copy binary
 mkdir -p %{buildroot}%{install_dir}
-cp -f target/release/%{build_output} %{buildroot}%{install_dir}
+cp -f %{SOURCE0}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
 mkdir -p %{buildroot}%{icon_dir}
-cp -f assets/images/%{app_id}.png %{buildroot}%{icon_dir}
+cp -f %{SOURCE0}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
-cp -f assets/%{name}.desktop %{buildroot}%{apps_dir}
+cp -f %{SOURCE0}/assets/%{name}.desktop %{buildroot}%{apps_dir}
 
 %post
 # create link of binary
