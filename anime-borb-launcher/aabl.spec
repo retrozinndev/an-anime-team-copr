@@ -62,21 +62,21 @@ BuildRequires: rust-gdk4-devel
 %autosetup
 
 %build
-cd %{SOURCE0}
+cd %{_sourcedir}
 cargo build --release
 
 %install
 # copy binary
 mkdir -p %{buildroot}%{install_dir}
-cp -f %{SOURCE0}/target/release/%{build_output} %{buildroot}%{install_dir}
+cp -f %{_sourcedir}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
 mkdir -p %{buildroot}%{icon_dir}
-cp -f %{SOURCE0}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
+cp -f %{_sourcedir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
-cp -f %{SOURCE0}/assets/%{name}.desktop %{buildroot}%{apps_dir}
+cp -f %{_sourcedir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
 
 %post
 # create link of binary
