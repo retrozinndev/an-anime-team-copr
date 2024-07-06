@@ -7,7 +7,7 @@
 %define app_id moe.launcher.%{app_name}
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
-%define source1_dir %{_sourcedir}/%{source0_name}
+%define source1_dir %{_sourcedir}/%{source1_name}
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
