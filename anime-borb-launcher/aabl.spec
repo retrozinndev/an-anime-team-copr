@@ -10,7 +10,7 @@
 %define source0_dir %{_sourcedir}/%{source0_name}
 
 # name needs to be the same as package name in copr
-Name: anime-borb-launcher
+Name: an-anime-borb-launcher
 Version: 1.0.1
 Release: 1%{?dist}
 License: GPLv3
