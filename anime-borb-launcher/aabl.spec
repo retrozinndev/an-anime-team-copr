@@ -65,7 +65,8 @@ BuildRequires: tar
 %autosetup
 
 %build
-tar -xvzf %{SOURCE0}
+mv %{SOURCE0} %{_sourcedir}/%{source0_name}
+tar -xvzf %{source0_dir}
 cd %{source0_dir}
 cargo build --release
 
