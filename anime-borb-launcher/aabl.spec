@@ -6,6 +6,8 @@
 %define apps_dir %{_datadir}/applications
 %define app_id moe.launcher.%{app_name}
 %define build_output anime-borb-launcher
+%define source0_name %{name}-%{version}-%{release}.%{_arch}
+%define source0_dir %{_sourcedir}/%{source0_name}
 
 # name needs to be the same as package name in copr
 Name: anime-borb-launcher
@@ -62,21 +64,22 @@ BuildRequires: rust-gdk4-devel
 %autosetup
 
 %build
-cd %{_sourcedir}
+unzip %{SOURCE0}
+cd %{source0_dir}
 cargo build --release
 
 %install
 # copy binary
 mkdir -p %{buildroot}%{install_dir}
-cp -f %{_sourcedir}/target/release/%{build_output} %{buildroot}%{install_dir}
+cp -f %{source0_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
 mkdir -p %{buildroot}%{icon_dir}
-cp -f %{_sourcedir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
+cp -f %{source0_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
-cp -f %{_sourcedir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
+cp -f %{source0_dir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
 
 %post
 # create link of binary
