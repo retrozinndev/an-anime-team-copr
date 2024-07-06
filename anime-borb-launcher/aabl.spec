@@ -6,8 +6,8 @@
 %define apps_dir %{_datadir}/applications
 %define app_id moe.launcher.%{app_name}
 %define build_output anime-borb-launcher
-%define source0_name %{name}-%{release}
-%define source0_dir %{_sourcedir}/%{source0_name}
+%define source1_name %{srcname}-%{version}
+%define source1_dir %{_sourcedir}/%{source0_name}
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
@@ -20,7 +20,7 @@ Url: https://github.com/an-anime-team/%{srcname}
 # git clone https://github.com/an-anime-team/%{srcname}.git
 # cd %{srcname}
 # tito build --tgz
-Source0: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
+Source1: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
 BuildArch: x86_64
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
@@ -65,23 +65,22 @@ BuildRequires: tar
 %autosetup
 
 %build
-mv %{SOURCE0} %{_sourcedir}/%{source0_name}
-tar -xvzf %{source0_dir}
-cd %{source0_dir}
+tar -xvzf %{SOURCE1}
+cd %{source1_dir}
 cargo build --release
 
 %install
 # copy binary
 mkdir -p %{buildroot}%{install_dir}
-cp -f %{source0_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
+cp -f %{source1_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
 mkdir -p %{buildroot}%{icon_dir}
-cp -f %{source0_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
+cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
-cp -f %{source0_dir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
+cp -f %{source1_dir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
 
 %post
 # create link of binary
