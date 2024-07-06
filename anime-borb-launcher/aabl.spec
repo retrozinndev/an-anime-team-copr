@@ -67,6 +67,12 @@ BuildRequires: tar
 
 %build
 tar -xvzf %{SOURCE1}
+
+# Debug to understand what's inside source dir
+echo ""
+ls -a
+echo ""
+
 cd %{source1_dir}
 cargo build --release
 
