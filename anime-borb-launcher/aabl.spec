@@ -20,6 +20,7 @@ Url: https://github.com/an-anime-team/%{srcname}
 # git clone https://github.com/an-anime-team/%{srcname}.git
 # cd %{srcname}
 # tito build --tgz
+Source0: https://github.com/retrozinndev/an-anime-team-copr/archive/refs/heads/main.tar.gz
 Source1: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
 BuildArch: x86_64
 
