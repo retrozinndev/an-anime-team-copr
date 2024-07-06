@@ -55,6 +55,7 @@ BuildRequires: cairo-devel
 BuildRequires: gdk-pixbuf2-devel
 BuildRequires: pango-devel
 BuildRequires: rust-gdk4-devel
+BuildRequires: tar
 
 %description
 %{summary}
@@ -64,7 +65,7 @@ BuildRequires: rust-gdk4-devel
 %autosetup
 
 %build
-unzip %{SOURCE0}
+tar -xvzf %{SOURCE0}
 cd %{source0_dir}
 cargo build --release
 
