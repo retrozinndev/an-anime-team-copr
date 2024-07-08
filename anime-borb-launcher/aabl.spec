@@ -1,7 +1,7 @@
 
 %global srcname an-anime-borb-launcher
 %global app_name An Anime Borb Launcher
-%define install_dir %{_libdir}/%{app_name}
+%define install_dir %{_libdir}/%{src_name}
 %define icon_dir %{_datadir}/icons
 %define apps_dir %{_datadir}/applications
 %define app_id moe.launcher.%{app_name}
