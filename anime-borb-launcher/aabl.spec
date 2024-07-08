@@ -78,7 +78,7 @@ cp -f %{source1_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
 mkdir -p %{buildroot}%{icon_dir}
-cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}
+cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
 cp -f %{source1_dir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
