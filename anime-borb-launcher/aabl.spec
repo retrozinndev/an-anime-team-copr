@@ -66,10 +66,7 @@ BuildRequires: tar
 %autosetup
 
 %build
-tar -xvzf %{SOURCE1}
-# Debug to understand what's inside source dir
-pwd
-ls -a
+tar -xvzf %{SOURCE1} --directory %{_sourcedir}
 cd %{source1_dir}
 cargo build --release
 
