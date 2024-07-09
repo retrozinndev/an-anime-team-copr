@@ -91,8 +91,6 @@ chmod +x %{install_dir}/%{name}
 
 #-- FILES ---------------------------------------------------------------------#
 %files
-%doc README.md
-%license %{source1_dir}/LICENSE
 %{install_dir}/*
 %{icon_dir}/%{app_id}.png
 %{apps_dir}/%{build_output}.desktop
