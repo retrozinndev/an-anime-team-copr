@@ -4,7 +4,7 @@
 %define install_dir %{_libdir}/%{src_name}
 %define icon_dir %{_datadir}/icons
 %define apps_dir %{_datadir}/applications
-%define app_id moe.launcher.%{app_name}
+%define app_id moe.launcher.%{srcname}
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
 %define source1_dir %{_sourcedir}/%{source1_name}
