@@ -81,7 +81,7 @@ mkdir -p %{buildroot}%{icon_dir}
 cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
 mkdir -p %{buildroot}%{apps_dir}
-cp -f %{source1_dir}/assets/%{name}.desktop %{buildroot}%{apps_dir}
+cp -f %{source1_dir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
 
 %post
 # create link of binary
@@ -95,7 +95,7 @@ chmod +x %{install_dir}/%{name}
 %license LICENSE
 %{install_dir}/*
 %{icon_dir}/%{app_id}.png
-%{apps_dir}/%{name}.desktop
+%{apps_dir}/%{build_output}.desktop
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
