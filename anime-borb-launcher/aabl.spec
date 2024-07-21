@@ -71,6 +71,9 @@ cd %{source1_dir}
 cargo build --release
 
 %install
+# copy readme and license
+cp -f %{source1_dir}/LICENSE %{buildroot}%{install_dir}
+cp -f %{source1_dir}/README.md %{buildroot}%{install_dir}
 # copy binary
 mkdir -p %{buildroot}%{install_dir}
 cp -f %{source1_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
@@ -91,8 +94,8 @@ chmod +x %{install_dir}/%{name}
 
 #-- FILES ---------------------------------------------------------------------#
 %files
-%doc %{source1_dir}/README.md
-%license %{source1_dir}/LICENSE
+%doc %{install_dir}/README.md
+%license %{install_dir}/LICENSE
 %{install_dir}/*
 %{icon_dir}/%{app_id}.png
 %{apps_dir}/%{build_output}.desktop
