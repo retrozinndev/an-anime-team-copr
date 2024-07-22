@@ -2,7 +2,6 @@
 %global srcname an-anime-borb-launcher
 %global app_name An Anime Borb Launcher
 %global debug_package %{nil}
-
 %define install_dir %{_libdir}/%{srcname}
 %define icon_dir %{_datadir}/icons
 %define apps_dir %{_datadir}/applications
