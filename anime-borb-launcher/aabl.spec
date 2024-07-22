@@ -71,19 +71,21 @@ cd %{source1_dir}
 cargo build --release
 
 %install
+# create necessary directories
+mkdir -p %{buildroot}%{install_dir}
+mkdir -p %{buildroot}%{apps_dir}
+mkdir -p %{buildroot}%{icon_dir}
+
 # copy readme and license
 cp -f %{source1_dir}/LICENSE %{buildroot}%{install_dir}
 cp -f %{source1_dir}/README.md %{buildroot}%{install_dir}
 # copy binary
-mkdir -p %{buildroot}%{install_dir}
 cp -f %{source1_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
-mkdir -p %{buildroot}%{icon_dir}
 cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
-mkdir -p %{buildroot}%{apps_dir}
 cp -f %{source1_dir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
 
 %post
