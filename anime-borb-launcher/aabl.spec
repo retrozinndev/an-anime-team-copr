@@ -75,7 +75,6 @@ cargo build --release
 mkdir -p %{buildroot}%{install_dir}
 mkdir -p %{buildroot}%{apps_dir}
 mkdir -p %{buildroot}%{icon_dir}
-
 # copy readme and license
 cp -f %{source1_dir}/LICENSE %{buildroot}%{install_dir}
 cp -f %{source1_dir}/README.md %{buildroot}%{install_dir}
