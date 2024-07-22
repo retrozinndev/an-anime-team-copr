@@ -1,3 +1,4 @@
+
 %global srcname an-anime-borb-launcher
 %global app_name An Anime Borb Launcher
 %define install_dir %{_libdir}/%{srcname}
@@ -6,7 +7,7 @@
 %define app_id moe.launcher.%{srcname}
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
-%define source1_dir %{_sourcedir}/%{source1_name}
+%define source1_dir %{buildroot}/%{source1_name}
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
@@ -21,7 +22,7 @@ Url: https://github.com/an-anime-team/%{srcname}
 # tito build --tgz
 Source0: https://github.com/retrozinndev/an-anime-team-copr/archive/refs/heads/main.tar.gz
 Source1: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
-BuildArch: x86_64
+BuildArch: noarch
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
 Requires: git
@@ -62,9 +63,10 @@ BuildRequires: tar
 
 #-- PREP, BUILD & INSTALL -----------------------------------------------------#
 %prep
+%autosetup
 
 %build
-tar -xvzf %{SOURCE1} --directory %{_sourcedir}
+tar -xvzf %{SOURCE1} --directory %{buildroot}
 cd %{source1_dir}
 cargo build --release
 
@@ -84,6 +86,8 @@ mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
 cp -f %{source1_dir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
+# clear source from build root
+rm -rf %{source1_dir}
 
 %post
 # create link of binary
