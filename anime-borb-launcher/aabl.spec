@@ -26,12 +26,12 @@ BuildArch: x86_64
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
 Requires: git
-Requires: glibc
+Requires: glibc-headers
 Requires: libwebp
 Requires: gtk4
 Requires: libcurl
 Requires: p7zip
-Requires: libadwaita
+Requires: rust-libadwaita
 Requires: xdg-desktop-portal
 
 #-- OPTIONAL DEPENDENCIES ------------------------------------------------------#
@@ -44,7 +44,7 @@ BuildRequires: rust
 BuildRequires: cargo
 BuildRequires: git
 BuildRequires: libcurl
-BuildRequires: libadwaita-devel
+BuildRequires: rust-libadwaita-devel
 BuildRequires: gtk4-devel
 BuildRequires: glibc
 BuildRequires: glib2
@@ -52,7 +52,7 @@ BuildRequires: glib2-devel
 BuildRequires: p7zip
 BuildRequires: gcc
 BuildRequires: gcc-c++
-BuildRequires: cairo-devel
+BuildRequires: rust-cairo-rs-devel
 BuildRequires: gdk-pixbuf2-devel
 BuildRequires: pango-devel
 BuildRequires: rust-gdk4-devel
