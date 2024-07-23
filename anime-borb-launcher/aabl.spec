@@ -22,7 +22,7 @@ Url: https://github.com/an-anime-team/%{srcname}
 # tito build --tgz
 Source0: https://github.com/retrozinndev/an-anime-team-copr/archive/refs/heads/main.tar.gz
 Source1: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
-BuildArch: noarch
+BuildArch: x86_64
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
 Requires: git
