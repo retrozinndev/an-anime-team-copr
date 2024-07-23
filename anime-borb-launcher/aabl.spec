@@ -7,7 +7,7 @@
 %define app_id moe.launcher.%{srcname}
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
-%define source1_dir %{buildroot}/%{source1_name}
+%define source1_dir %{_sourcedir}/%{source1_name}
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
@@ -66,7 +66,7 @@ BuildRequires: tar
 %autosetup
 
 %build
-tar -xvzf %{SOURCE1} --directory %{buildroot}
+tar -xvzf %{SOURCE1} --directory %{_sourcedir}
 cd %{source1_dir}
 cargo build --release
 
