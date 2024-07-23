@@ -105,3 +105,4 @@ chmod +x %{install_dir}/%{name}
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
+%autochangelog
