@@ -89,8 +89,6 @@ mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 cp -f %{source1_builddir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
 cp -f %{source1_builddir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
-# clear source from build root
-rm -rf %{source1_builddir}
 
 %post
 # create link of binary
