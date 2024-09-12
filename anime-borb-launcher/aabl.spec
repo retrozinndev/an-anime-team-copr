@@ -7,7 +7,7 @@
 %define app_id moe.launcher.%{srcname}
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
-%define source1_dir %{_sourcedir}/%{source1_name}
+%define source1_builddir %{_builddir}/%{source1_name}
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
@@ -66,8 +66,11 @@ BuildRequires: tar
 %autosetup
 
 %build
-tar -xvzf %{SOURCE1} --directory %{_sourcedir}
-cd %{source1_dir}
+echo "Extracting source1 to build dir"
+tar -xvzf %{SOURCE1} --directory %{_builddir}
+echo "Checking out build dir"
+cd %{source1_builddir}
+echo "Starting build of Source1"
 cargo build --release
 
 %install
@@ -76,18 +79,18 @@ mkdir -p %{buildroot}%{install_dir}
 mkdir -p %{buildroot}%{apps_dir}
 mkdir -p %{buildroot}%{icon_dir}
 # copy readme and license
-cp -f %{source1_dir}/LICENSE %{buildroot}%{install_dir}
-cp -f %{source1_dir}/README.md %{buildroot}%{install_dir}
+cp -f %{source1_builddir}/LICENSE %{buildroot}%{install_dir}
+cp -f %{source1_builddir}/README.md %{buildroot}%{install_dir}
 # copy binary
-cp -f %{source1_dir}/target/release/%{build_output} %{buildroot}%{install_dir}
+cp -f %{source1_builddir}/target/release/%{build_output} %{buildroot}%{install_dir}
 # rename binary
 mv %{buildroot}%{install_dir}/%{build_output} %{buildroot}%{install_dir}/%{name}
 # copy icon
-cp -f %{source1_dir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
+cp -f %{source1_builddir}/assets/images/icon.png %{buildroot}%{icon_dir}/%{app_id}.png
 # copy desktop file
-cp -f %{source1_dir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
+cp -f %{source1_builddir}/assets/%{build_output}.desktop %{buildroot}%{apps_dir}
 # clear source from build root
-rm -rf %{source1_dir}
+rm -rf %{source1_builddir}
 
 %post
 # create link of binary
