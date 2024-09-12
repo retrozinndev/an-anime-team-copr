@@ -66,7 +66,7 @@ BuildRequires: tar
 %autosetup
 
 %build
-echo "Extracting source1 to build dir"
+echo "Extracting Source1 to build dir"
 tar -xvzf %{SOURCE1} --directory %{_builddir}
 echo "Checking out build dir"
 cd %{source1_builddir}
@@ -75,9 +75,9 @@ cargo build --release
 
 %install
 # create necessary directories
-mkdir -p %{buildroot}%{install_dir}
-mkdir -p %{buildroot}%{apps_dir}
-mkdir -p %{buildroot}%{icon_dir}
+mkdir -p %{buildroot}/%{install_dir}
+mkdir -p %{buildroot}/%{apps_dir}
+mkdir -p %{buildroot}/%{icon_dir}
 # copy readme and license
 cp -f %{source1_builddir}/LICENSE %{buildroot}%{install_dir}
 cp -f %{source1_builddir}/README.md %{buildroot}%{install_dir}
@@ -100,8 +100,6 @@ chmod +x %{install_dir}/%{name}
 
 #-- FILES ---------------------------------------------------------------------#
 %files
-%doc %{install_dir}/README.md
-%license %{install_dir}/LICENSE
 %{install_dir}/*
 %{icon_dir}/%{app_id}.png
 %{apps_dir}/%{build_output}.desktop
