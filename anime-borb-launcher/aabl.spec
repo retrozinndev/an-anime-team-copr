@@ -1,6 +1,6 @@
-
 %global srcname an-anime-borb-launcher
 %global app_name An Anime Borb Launcher
+
 %define install_dir %{_libdir}/%{srcname}
 %define icon_dir %{_datadir}/icons
 %define apps_dir %{_datadir}/applications
@@ -8,6 +8,8 @@
 %define build_output anime-borb-launcher
 %define source1_name %{srcname}-%{version}
 %define source1_builddir %{_builddir}/%{source1_name}
+%define debug_package %{nil}
+
 
 # name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
