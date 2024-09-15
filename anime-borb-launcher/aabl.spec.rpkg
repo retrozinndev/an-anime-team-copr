@@ -10,21 +10,18 @@
 %define source1_builddir %{_builddir}/%{source1_name}
 %define debug_package %{nil}
 
-
-# name needs to be the same as package name in copr
 Name: an-anime-borb-launcher
 Version: 1.0.1
 Release: 1%{?dist}
 License: GPLv3
 Summary: An Anime Borb Launcher for Linux with automatic patching and telemetry disabling. App is unmaintened!
-Url: https://github.com/an-anime-team/%{srcname}
-# Sources can be obtained by
-# git clone https://github.com/an-anime-team/%{srcname}.git
-# cd %{srcname}
-# tito build --tgz
+
+URL: https://github.com/an-anime-team/%{srcname}
+VCS: {{{ git_dir_vcs }}}
+BuildArch: x86_64
+
 Source0: https://github.com/retrozinndev/an-anime-team-copr/archive/refs/heads/main.tar.gz
 Source1: https://github.com/an-anime-team/%{srcname}/archive/refs/tags/%{version}.tar.gz
-BuildArch: x86_64
 
 #-- APPLICATION DEPENDENCIES ---------------------------------------------------#
 Requires: git
@@ -68,11 +65,8 @@ BuildRequires: tar
 %autosetup
 
 %build
-echo "Extracting Source1 to build dir"
 tar -xvzf %{SOURCE1} --directory %{_builddir}
-echo "Checking out build dir"
 cd %{source1_builddir}
-echo "Starting build of Source1"
 cargo build --release
 
 %install
@@ -106,4 +100,4 @@ chmod +x %{install_dir}/%{name}
 
 #-- CHANGELOG -----------------------------------------------------------------#
 %changelog
-%autochangelog
+{{{ git_dir_changelog }}}
