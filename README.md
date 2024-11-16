@@ -2,7 +2,9 @@
 Just a simple Fedora Copr Repository for AAT apps.
 
 > [!important]
-> I'm still building the copr stuff, get back later to use the new repo.
+> I'm still building the copr stuff, get back later to use this repo.
+
+I´m really tired of building and testing RPMs frfr 😭
 
 See how to use it in [Copr](https://copr.fedorainfracloud.org/coprs/retrozinndev/an-anime-team-apps/).
 
